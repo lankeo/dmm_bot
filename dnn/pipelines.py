@@ -12,7 +12,7 @@ from dnn.user_config import db
 class DnnPipeline(object):
     def open_spider(self, spider):
         client = MongoClient(host=db.get('host'), port=db.get('port'))
-        self.collections = client[db.get('db_name')][spider.name]
+        self.collections = client[db.get('dbname')][spider.name]
     
     def close_spider(self, spider):
         count = self.collections.count()

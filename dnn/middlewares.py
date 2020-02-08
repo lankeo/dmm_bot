@@ -101,3 +101,9 @@ class DnnDownloaderMiddleware(object):
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
+
+
+class ProxyMiddleware(object):
+    def process_request(self, request, spider):
+        request.meta['proxy']="http://"+'192.168.44.2:9001'
+        

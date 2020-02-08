@@ -48,9 +48,10 @@ LOG_LEVEL = 'INFO'
 
 # Enable or disable downloader middlewares
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'dnn.middlewares.DnnDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+   # 'dnn.middlewares.DnnDownloaderMiddleware': 543,
+   'dnn.middlewares.ProxyMiddleware': 100,
+}
 
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html

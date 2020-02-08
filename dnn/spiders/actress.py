@@ -22,12 +22,15 @@ class R18Spider(scrapy.Spider):
             item["_zh"] = None
             yield item
         next_page = response.xpath("//li[@class='next']/a/@href").get()
-        print("开始下一页的爬取")
+
         if next_page is not None:
+            print("开始第%s页的爬取" % self.get_page(next_page))
             yield response.follow(next_page, self.parse)
 
     def handle_name(self, s):
         """ 处理ulr中的英文名"""
         return " ".join(s.split("/")[-1].split(".")[0].split("_")[::-1]).capitalize()
 
-    
+    def get_page(self, s):
+        """ 获取当前页码 """
+        return s.split('/')[-2].split('=')[1]
